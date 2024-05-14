@@ -9,7 +9,7 @@ export default function HomeSite() {
         <Link href={"./HomeDash/FindPokemon"}>Search Pokemon</Link>
       </h1>
       <h1>
-        <Link href={"./HomeDash/Catalog"}>Catalog Pokemon</Link>
+        <Link href={"./HomeDash/CatalogPokemon"}>Catalog Pokemon</Link>
       </h1>
     </>
   );
