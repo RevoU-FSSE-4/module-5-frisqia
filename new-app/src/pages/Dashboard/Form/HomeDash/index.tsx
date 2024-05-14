@@ -6,10 +6,10 @@ export default function HomeSite() {
   return (
     <>
       <h1>
-        <Link href={"./RegisterForm"}>Sign Up</Link>
+        <Link href={"./FindPokemon"}>Search Pokemon</Link>
       </h1>
       <h1>
-        <Link href={"./LoginForm"}>Sign In</Link>
+        <Link href={"/Catalog"}>Catalog Pokemon</Link>
       </h1>
     </>
   );

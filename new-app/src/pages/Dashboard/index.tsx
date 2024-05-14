@@ -1,5 +1,6 @@
+import FooterPage from "./Footer";
 import HomeSite from "./Form";
-import NavbarPage from "./Navbar/Navbar";
+import NavbarPage from "./Navbar";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -11,6 +12,7 @@ const Dashboard = (props: AppShellProps) => {
       <NavbarPage />
       {children}
       <HomeSite />
+      <FooterPage />
     </div>
   );
 };
