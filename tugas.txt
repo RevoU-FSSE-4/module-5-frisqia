@@ -1,0 +1,31 @@
+✓ Tugas Menengah
+Hasil kerja
+Dalam modul ini, Anda akan melanjutkan pengembangan aplikasi React yang dikembangkan pada modul sebelumnya dengan mengintegrasikan Next.js atau Vite-React-Plugin. Next.js dan Vite adalah alat canggih untuk rendering sisi server (SSR) dan pengembangan React yang efisien. Topik kuliah baru mencakup konsep penting untuk menggabungkan SSR ke dalam aplikasi Anda, mengelola perutean dan data, menyesuaikan dokumen server, dan mengoptimalkan pengambilan data di React dan Next.js.
+Tugas
+1. Tingkatkan Aplikasi React Anda yang Ada:
+A. Inisialisasi Proyek Next.js Baru:
+Saya. Gunakan perintah npm atau benang yang sesuai untuk menginisialisasi proyek Next.js baru.
+ii. Ikuti dokumentasi resmi Next.js untuk panduan penyiapan proyek.
+B. Salin Proyek React Anda Sebelumnya:
+Saya. Salin file dan direktori dari proyek React Anda yang ada ke proyek Next.js yang baru dibuat.
+ii. Pertahankan struktur direktori, komponen, dan aset.
+C. Perbarui Ketergantungan:
+Saya. Perbarui dan instal semua dependensi yang diperlukan khusus untuk Next.js.
+ii. Pastikan proyek Anda memiliki paket yang diperlukan untuk integrasi yang lancar dengan fitur Next.is.
+D. Memfaktorkan Ulang Titik Masuk:
+1. Identifikasi titik masuk proyek React Anda yang sudah ada.
+ii. Perbarui titik masuk agar selaras dengan fitur Next.js.
+aku aku aku. Periksa perubahan sintaksis apa pun yang diperlukan untuk kompatibilitas.
+2. Menerapkan Rendering Sisi Server:
+A. Pilih Halaman/Komponen untuk SSR:
+Saya. Pilih halaman atau komponen dari proyek yang Anda salin tempat rendering sisi server dapat meningkatkan pengalaman pengguna.
+ii. Sebaiknya pilih halaman dengan data dinamis atau komponen yang mendapat manfaat dari pra-render.
+B. Terapkan getServerSideProps:
+Saya. Dalam halaman atau komponen yang dipilih, implementasikan fungsi getServerSide Props.
+ii. Pahami siklus hidup dan tujuan fungsi ini dalam mengaktifkan rendering sisi server.
+C. Ambil Data dengan getServerSideProps:
+Saya. Ambil data dari API eksternal atau sumber dalam fungsi getServerSide Props.
+ii. Pastikan data yang diambil diproses dengan benar.
+D. Perbarui Rendering Komponen:
+Saya. Perbarui komponen untuk menggunakan data yang diambil untuk rendering.
+ii. Ubah logika komponen untuk memanfaatkan data yang dirender di sisi server secara efektif.
