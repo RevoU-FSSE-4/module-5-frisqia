@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname == "/Login") {
-    return NextResponse.redirect(new URL("/Catalog", request.url));
+  if (request.nextUrl.pathname == "./Dashboard/Form/LoginForm") {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 }

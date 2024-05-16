@@ -1,13 +1,16 @@
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import * as Yup from "yup";
+import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 
-interface LoginUser {
+interface RegisterUser {
   email: string;
   password: string;
 }
 
-function LoginForm() {
+function LoginForm({
+  apiUrl,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
   const loginValid = Yup.object({
     password: Yup.string()
@@ -19,6 +22,7 @@ function LoginForm() {
       .email("Invalid email address")
       .required("Email is required"),
   });
+
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -29,7 +33,8 @@ function LoginForm() {
       handleLogin(values);
     },
   });
-  async function handleLogin(credential: LoginUser) {
+
+  async function handleLogin(credential: RegisterUser) {
     try {
       const body = {
         email: credential.email,
@@ -42,10 +47,7 @@ function LoginForm() {
         },
         body: JSON.stringify(body),
       };
-      const response = await fetch(
-        "https://library-crud-sample.vercel.app/api/user/login",
-        options
-      );
+      const response = await fetch(`${apiUrl}/user/login`, options);
       const data = await response.json();
       if (!response.ok) {
         throw new Error(
@@ -55,7 +57,7 @@ function LoginForm() {
         localStorage.setItem("token", data.token);
         console.log(data);
       }
-      router.push("./HomeDash");
+      router.push("/Dashboard");
     } catch (error) {
       alert(error);
     }
@@ -128,4 +130,13 @@ function LoginForm() {
     </form>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      apiUrl: "https://library-crud-sample.vercel.app/api",
+    },
+  };
+};
+
 export default LoginForm;
