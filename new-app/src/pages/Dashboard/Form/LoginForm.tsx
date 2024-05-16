@@ -1,19 +1,14 @@
-import { useRouter } from "next/router";
 import { useFormik } from "formik";
+import { useRouter } from "next/router";
 import * as Yup from "yup";
 
-interface RegisterUser {
-  email: string;
-  password: string;
-}
-
-interface RegisterUser {
+interface LoginUser {
   email: string;
   password: string;
 }
 
 function LoginForm() {
-  // Menggunakan useNavigate untuk navigasi
+  const router = useRouter();
   const loginValid = Yup.object({
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
@@ -34,7 +29,7 @@ function LoginForm() {
       handleLogin(values);
     },
   });
-  async function handleLogin(credential: RegisterUser) {
+  async function handleLogin(credential: LoginUser) {
     try {
       const body = {
         email: credential.email,
@@ -60,13 +55,16 @@ function LoginForm() {
         localStorage.setItem("token", data.token);
         console.log(data);
       }
+      router.push("./HomeDash");
     } catch (error) {
       alert(error);
     }
   }
 
   // Fungsi untuk navigasi ke halaman RegisterForm
-  const router = useRouter();
+  const handleRegisterClick = () => {
+    router.push("./RegisterForm");
+  };
 
   return (
     <form
@@ -120,7 +118,7 @@ function LoginForm() {
           {/* Tombol untuk menuju halaman RegisterForm */}
           <button
             type="button"
-            onClick={() => router.push("/RegsterForm")} // Memanggil fungsi handleRegisterClick saat tombol diklik
+            onClick={handleRegisterClick} // Memanggil fungsi handleRegisterClick saat tombol diklik
             className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Register
@@ -131,14 +129,3 @@ function LoginForm() {
   );
 }
 export default LoginForm;
-
-// export default function LoginForm() {
-//   const router = useRouter();
-
-//   return (
-//     <form>
-//       <p>Haven't account?</p>
-//       <button onClick={() => router.push("/RegsterForm")}>Registrer</button>
-//     </form>
-//   );
-// }
