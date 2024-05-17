@@ -1,7 +1,7 @@
+// RegisterForm.jsx
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import * as Yup from "yup";
-import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 
 interface RegisterUser {
   name: string;
@@ -9,9 +9,7 @@ interface RegisterUser {
   password: string;
 }
 
-function RegisterForm({
-  apiUrl,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function RegisterForm() {
   const router = useRouter();
   const registerValidation = Yup.object({
     password: Yup.string()
@@ -24,7 +22,6 @@ function RegisterForm({
       .required("Email is required"),
     name: Yup.string().required("Name is required"),
   });
-
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -36,7 +33,6 @@ function RegisterForm({
       handleRegister(values);
     },
   });
-
   async function handleRegister(credential: RegisterUser) {
     try {
       const body = {
@@ -51,7 +47,10 @@ function RegisterForm({
         },
         body: JSON.stringify(body),
       };
-      const response = await fetch(`${apiUrl}/user/register`, options);
+      const response = await fetch(
+        "https://library-crud-sample.vercel.app/api/user/register",
+        options
+      );
       const data = await response.json();
       if (!response.ok) {
         throw new Error("Failed to register");
@@ -59,12 +58,11 @@ function RegisterForm({
         localStorage.setItem("token", data.token);
         console.log(data);
       }
-      router.push("./LoginForm");
+      router.push("/Form/LoginForm");
     } catch (error) {
       alert(error);
     }
   }
-
   return (
     <form
       onSubmit={formik.handleSubmit}
@@ -82,7 +80,7 @@ function RegisterForm({
         name="name"
         onChange={formik.handleChange}
         value={formik.values.name}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline py-2 mb-4"
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline-3 py-2 mb-4"
       />
       {formik.touched.name && formik.errors.name ? (
         <div className="text-red-500">{formik.errors.name}</div>
@@ -130,13 +128,4 @@ function RegisterForm({
     </form>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    props: {
-      apiUrl: "https://library-crud-sample.vercel.app/api",
-    },
-  };
-};
-
 export default RegisterForm;
