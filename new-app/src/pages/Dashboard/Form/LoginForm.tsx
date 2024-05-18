@@ -55,7 +55,7 @@ function LoginForm() {
         localStorage.setItem("token", data.token);
         console.log(data);
       }
-      router.push("/");
+      router.push("/Dasboard/Pokemon");
     } catch (error) {
       alert(error);
     }

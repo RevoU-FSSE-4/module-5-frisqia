@@ -1,8 +1,15 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname == "./Dashboard/Form/LoginForm") {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-}
+const useAuth = (): null => {
+  const router = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/Dashboard/Pokemon");
+    }
+  }, []);
+  return null;
+};
+
+export default useAuth;

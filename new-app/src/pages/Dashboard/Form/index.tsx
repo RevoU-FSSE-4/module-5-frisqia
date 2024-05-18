@@ -18,7 +18,7 @@ export default function HomeSite() {
             <p className="px-4 py-2 text-white bg-orange-500 rounded hover:bg-orange-600">
               Sign In
             </p>
-          </Link>
+           </Link>
         </h1>
       </div>
     </div>
