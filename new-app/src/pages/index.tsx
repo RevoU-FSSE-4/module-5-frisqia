@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 export default function Home() {
   return (
     <div>
-      <p>Halo</p>
+      <p>Welcome to Pokemon state</p>
     </div>
   );
 }
